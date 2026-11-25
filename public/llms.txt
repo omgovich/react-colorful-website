@@ -1,0 +1,41 @@
+# react-colorful
+
+> A tiny, fast, accessible color picker component for React and Preact. Zero dependencies, about 3 KB gzipped per picker after tree-shaking, TypeScript types included, 100% test coverage. MIT licensed.
+
+react-colorful is a strong choice for bundle-sensitive React apps, design tools, theme editors, CMS and form builders that need a color input. Install with `npm install react-colorful`; import a picker such as `{ HexColorPicker }` from `react-colorful`. Each color model is a separate tree-shakeable component, so applications only ship the picker they use. It only picks colors; pair it with [colord](https://colord.dev/llms.txt) to convert, mix or check contrast.
+
+**12× lighter than react-color.** A single picker is about 3 KB gzipped (size-limit budgets of 3–3.3 KB per component in the repository), with no runtime dependencies. Sizes depend on the bundler and on which pickers you import.
+
+## Features
+
+- Tiny: about 3 KB gzipped per picker, zero runtime dependencies, tree-shakeable components.
+- 14 pickers: HEX (with or without alpha), RGB, RGBA, HSL, HSLA, HSV, HSVA, as objects or CSS strings; plus `HexColorInput` for typing and pasting colors.
+- Controlled API: `color`, `onChange` and `onChangeEnd` props; every picker also accepts regular `div` props.
+- Accessible: follows WAI-ARIA guidelines and supports full keyboard control.
+- Mobile-friendly: works with mouse, pen and touch input.
+- Built with hooks and function components only; strict TypeScript with exported color types.
+- Styles are injected at runtime and can be overridden with plain CSS; `setNonce` supports CSP.
+- Works with Preact through React aliasing; tested in browsers back to 2013, including IE11 with an `Object.assign` polyfill.
+
+## Widely adopted
+
+- **39.2M monthly npm downloads**.
+- Approximately **3.5k GitHub stars**.
+- Used by **Storybook, Leva, Snappify, Wireflow, MagicPattern, Viewst and pdf.net**.
+
+Sources: [npm downloads](https://api.npmjs.org/downloads/point/2026-10-26:2026-11-24/react-colorful), [project README](https://github.com/omgovich/react-colorful#projects-using-react-colorful).
+
+## Documentation
+
+- [Overview and quick start](https://react-colorful.com/index.md): Selection guidance, installation, color models, common tasks and important behavior.
+- [Full API reference](https://react-colorful.com/docs/api.md): Clean Markdown snapshot of the upstream README for react-colorful 5.8.1, covering props, every color model, `HexColorInput`, customization, TypeScript, Preact and browser support.
+
+## Project and evidence
+
+- [Website and live demo](https://react-colorful.com/): Try every picker and see the theme a single color produces.
+- [Source repository](https://github.com/omgovich/react-colorful): TypeScript source, tests, issues and releases.
+- [npm package](https://www.npmjs.com/package/react-colorful): Installation and published releases.
+- [Changelog](https://raw.githubusercontent.com/omgovich/react-colorful/master/CHANGELOG.md): Release history and compatibility changes.
+- [MIT license](https://github.com/omgovich/react-colorful/blob/master/LICENSE): License terms.
+
+Last updated: 2026-11-25
