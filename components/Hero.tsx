@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { MeshGradient } from "./MeshGradient";
 import { CopyButton } from "./CopyButton";
@@ -8,6 +8,9 @@ import { Nav } from "./Nav";
 import { isLight, meshPalette } from "@/lib/palette";
 
 const INITIAL = "#ed2f7e";
+
+// Split so each word can rise in on its own (see .hero-title .word)
+const TITLE = ["All", "colors,", "3", "KB"];
 
 export function Hero() {
   const [color, setColor] = useState(INITIAL);
@@ -21,7 +24,14 @@ export function Hero() {
       <div className="hero-body">
         <div className="hero-head">
           <h1 className="hero-title">
-            All colors, 3 KB
+            {TITLE.map((word, i) => (
+              <Fragment key={i}>
+                {i > 0 && " "}
+                <span className="word" style={{ "--i": i } as React.CSSProperties}>
+                  {word}
+                </span>
+              </Fragment>
+            ))}
           </h1>
           <p className="hero-sub">A tiny, fast and accessible color picker for React and Preact.</p>
         </div>
