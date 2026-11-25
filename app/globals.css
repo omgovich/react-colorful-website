@@ -1142,6 +1142,28 @@ button {
 }
 
 @media (max-width: 640px) {
+  /* Smaller showcase pickers on phones */
+  .picker--hero,
+  .picker--colord {
+    width: 232px;
+  }
+
+  .picker--hero .react-colorful__saturation,
+  .picker--colord .react-colorful__saturation {
+    height: 208px;
+  }
+
+  .picker--hero .react-colorful__hue,
+  .picker--colord .react-colorful__hue {
+    height: 24px;
+  }
+
+  .picker--hero .react-colorful__pointer,
+  .picker--colord .react-colorful__pointer {
+    width: 26px;
+    height: 26px;
+  }
+
   .nav-links {
     gap: 20px;
     font-size: 14px;
