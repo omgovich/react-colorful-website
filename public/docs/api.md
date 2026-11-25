@@ -1,10 +1,10 @@
 # react-colorful API reference
 
-Documentation for react-colorful 5.8.1.
+Documentation for react-colorful 5.8.2.
 
-Source: https://github.com/omgovich/react-colorful/blob/fb9548912169c104cce6d2abf6d83e1b38a321cb/README.md
+Source: https://github.com/omgovich/react-colorful/blob/65e8efe88a332b53fa14cf2e9d852238a79e24d2/README.md
 
-License: MIT — https://github.com/omgovich/react-colorful/blob/fb9548912169c104cce6d2abf6d83e1b38a321cb/LICENSE
+License: MIT — https://github.com/omgovich/react-colorful/blob/65e8efe88a332b53fa14cf2e9d852238a79e24d2/LICENSE
 
 ## Features
 
@@ -229,9 +229,16 @@ Today each dependency drags more dependencies and increases your project’s bun
 - built with hooks and functional components only (no classes and polyfills for them);
 - ships only a minimal amount of manually optimized color conversion algorithms (while most of the popular pickers import entire color manipulation libraries that increase the bundle size by more than 10 KB and make your app slower).
 
-To show you the problem that **react-colorful** is trying to solve, we have performed a simple benchmark (using [bundlephobia.com](https://bundlephobia.com)) against popular React color picker libraries:
+To show you the problem that **react-colorful** is trying to solve, we have compared the bundle size of popular React color picker libraries:
 
-Compare current sizes on [bundlephobia](https://bundlephobia.com/package/react-colorful): react-colorful versus react-color, react-input-color and rc-color-picker.
+| Name               | Bundle size | Bundle size (gzip) | Dependencies |
+| ------------------ | ----------: | -----------------: | -----------: |
+| **react-colorful** | **14.1 KB** |         **4.8 KB** |        **0** |
+| react-color        |    151.2 KB |            44.3 KB |            7 |
+| react-input-color  |     56.2 KB |            20.5 KB |            6 |
+| rc-color-picker    |    121.0 KB |            37.2 KB |            5 |
+
+Measured in November 2026 for the latest version of each package: the whole package bundled with esbuild, minified and gzipped, with React excluded. A single tree-shaken `HexColorPicker` is 3.4 KB gzipped, while react-color is not tree-shakeable: importing only its `ChromePicker` still adds 44.1 KB.
 
 ## Projects using react-colorful
 

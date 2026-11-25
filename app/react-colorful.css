@@ -1,4 +1,4 @@
-/* Styles of react-colorful@5.8.1, inlined so the pickers render styled before hydration.
+/* Styles of react-colorful@5.8.2, inlined so the pickers render styled before hydration.
    The library still injects the same rules at runtime. */
 .react-colorful{position:relative;display:flex;flex-direction:column;width:200px;height:200px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
 .react-colorful__saturation{position:relative;flex-grow:1;border-color:transparent;border-bottom:12px solid #000;border-radius:8px 8px 0 0;background-image:linear-gradient(0deg,#000,transparent),linear-gradient(90deg,#fff,hsla(0,0%,100%,0))}

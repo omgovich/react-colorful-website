@@ -28,7 +28,7 @@ Sources: [npm downloads](https://api.npmjs.org/downloads/point/2026-10-26:2026-1
 ## Documentation
 
 - [Overview and quick start](https://react-colorful.com/index.md): Selection guidance, installation, color models, common tasks and important behavior.
-- [Full API reference](https://react-colorful.com/docs/api.md): Clean Markdown snapshot of the upstream README for react-colorful 5.8.1, covering props, every color model, `HexColorInput`, customization, TypeScript, Preact and browser support.
+- [Full API reference](https://react-colorful.com/docs/api.md): Clean Markdown snapshot of the upstream README for react-colorful 5.8.2, covering props, every color model, `HexColorInput`, customization, TypeScript, Preact and browser support.
 
 ## Project and evidence
 
