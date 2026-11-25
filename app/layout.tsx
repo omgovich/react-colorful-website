@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
-import "./react-colorful.css";
 import "./globals.css";
+import { HydrationFlag } from "@/components/HydrationFlag";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -27,7 +27,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${GeistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <HydrationFlag />
+      </body>
     </html>
   );
 }

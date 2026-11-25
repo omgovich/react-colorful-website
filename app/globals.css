@@ -198,6 +198,16 @@ button {
 
 /* ---------- Picker skin ---------- */
 
+/* Unstyled until react-colorful injects its CSS on the client: hide, then fade in */
+.picker {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+[data-hydrated] .picker {
+  opacity: 1;
+}
+
 .picker .react-colorful {
   width: 100%;
   height: auto;
