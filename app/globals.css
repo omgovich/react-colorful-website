@@ -1005,19 +1005,6 @@ button {
 }
 
 
-.badge {
-  padding: 3px 9px;
-  border-radius: 999px;
-  font-family: var(--mono);
-  font-size: 12px;
-  background: #ddf7e6;
-  color: #067647;
-}
-
-.badge[data-grade="Fail"] {
-  background: #ffe1e1;
-  color: #b42318;
-}
 
 .notes-list {
   display: none;

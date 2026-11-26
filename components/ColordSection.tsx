@@ -9,10 +9,7 @@ import { CopyButton } from "./CopyButton";
 
 extend([mixPlugin, a11yPlugin]);
 
-const INK = "#0b0b0f";
-
-const grade = (ratio: number) =>
-  ratio >= 7 ? "AAA" : ratio >= 4.5 ? "AA" : ratio >= 3 ? "AA Large" : "Fail";
+const BLACK = "#000";
 
 const useTheme = (color: string) =>
   useMemo(() => {
@@ -24,17 +21,16 @@ const useTheme = (color: string) =>
     // disagree and the text becomes hard to read.
     const round = (n: number) => Math.round(n * 100) / 100;
     const onWhite = round(hover.contrast("#fff"));
-    const onInk = round(hover.contrast(INK));
+    const onInk = round(hover.contrast(BLACK));
     const whiteText = onWhite >= onInk;
     const contrast = Math.max(onWhite, onInk);
     return {
       light,
-      text: whiteText ? "#fff" : INK,
+      text: whiteText ? "#fff" : BLACK,
       whiteText,
       onWhite,
       onInk,
       contrast,
-      grade: grade(contrast),
       pageBg: c.mix("#fff", 0.93).toHex(),
       tagBg: c.mix("#fff", 0.86).toHex(),
       // Light colors need a deeper shade to stay readable on their own tint
@@ -188,12 +184,9 @@ export function ColordSection() {
             <span className="check">
               <code className="call">
                 .<span className="call-name">darken</span>(0.1).<span className="call-name">contrast</span>(
-                {t.whiteText ? '"#fff"' : '"#0b0b0f"'}) {t.contrast.toFixed(2)}
+                {t.whiteText ? '"#fff"' : '"#000"'}) {t.contrast.toFixed(2)}
                 <span className="call-hint"> → {t.whiteText ? "white" : "dark"} text</span>
               </code>
-              <span className="badge" data-grade={t.grade}>
-                {t.grade}
-              </span>
             </span>
           </div>
 
