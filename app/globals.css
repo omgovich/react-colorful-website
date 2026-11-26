@@ -718,10 +718,23 @@ button {
   color: var(--ink-2);
 }
 
+/* Picker, arrow, window and a 280px lane for the callouts, centered as one group */
 .theme-stage {
   display: grid;
-  grid-template-columns: 280px minmax(120px, 1fr) 500px 260px;
+  grid-template-columns: minmax(0, 1fr) 280px 120px 500px 280px minmax(0, 1fr);
   align-items: center;
+}
+
+.theme-stage > .picker--colord {
+  grid-column: 2;
+}
+
+.theme-stage > .flow {
+  grid-column: 3;
+}
+
+.theme-stage > .demo {
+  grid-column: 4;
 }
 
 .picker--colord {
@@ -1020,6 +1033,12 @@ button {
     grid-template-columns: 280px minmax(120px, auto) minmax(0, 500px);
     justify-content: center;
     column-gap: 40px;
+  }
+
+  .theme-stage > .picker--colord,
+  .theme-stage > .flow,
+  .theme-stage > .demo {
+    grid-column: auto;
   }
 }
 
