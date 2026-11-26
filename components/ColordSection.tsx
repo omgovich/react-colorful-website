@@ -18,12 +18,21 @@ const useTheme = (color: string) =>
   useMemo(() => {
     const c = colord(color);
     const light = c.isLight();
-    const text = light ? INK : "#fff";
     const hover = c.darken(0.1);
-    const contrast = Math.round(hover.contrast(text) * 100) / 100;
+    // Pick the button text by contrast against the button itself (the hover
+    // shade), not by isLight() of the picked color: near the threshold the two
+    // disagree and the text becomes hard to read.
+    const round = (n: number) => Math.round(n * 100) / 100;
+    const onWhite = round(hover.contrast("#fff"));
+    const onInk = round(hover.contrast(INK));
+    const whiteText = onWhite >= onInk;
+    const contrast = Math.max(onWhite, onInk);
     return {
       light,
-      text,
+      text: whiteText ? "#fff" : INK,
+      whiteText,
+      onWhite,
+      onInk,
       contrast,
       grade: grade(contrast),
       pageBg: c.mix("#fff", 0.93).toHex(),
@@ -176,18 +185,21 @@ export function ColordSection() {
           </div>
 
           <div className="checks">
-            <code className="call">
-              .<span className="call-name">isLight</span>() → {String(t.light)}
-              <span className="call-hint">  {t.light ? "dark" : "white"} text</span>
-            </code>
-            <span className="checks-right">
-              <code className="call">
-                .<span className="call-name">contrast</span>() {t.contrast.toFixed(2)}
-              </code>
-              <span className="badge" data-grade={t.grade}>
-                {t.grade}
+            {[
+              { arg: '"#fff"', value: t.onWhite, wins: t.whiteText },
+              { arg: '"#0b0b0f"', value: t.onInk, wins: !t.whiteText },
+            ].map(({ arg, value, wins }) => (
+              <span key={arg} className="check" data-wins={wins || undefined}>
+                <code className="call">
+                  .<span className="call-name">contrast</span>({arg}) {value.toFixed(2)}
+                </code>
+                {wins && (
+                  <span className="badge" data-grade={t.grade}>
+                    {t.grade}
+                  </span>
+                )}
               </span>
-            </span>
+            ))}
           </div>
 
           {/* Narrow screens: the same notes as a list instead of callouts */}

@@ -987,10 +987,16 @@ button {
   gap: 8px 16px;
 }
 
-.checks-right {
+.check {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  transition: opacity 0.2s;
+}
+
+/* The losing text color is dimmed; the winner is what the button uses */
+.check:not([data-wins]) {
+  opacity: 0.45;
 }
 
 .badge {
