@@ -20,17 +20,12 @@ const useTheme = (color: string) =>
     // shade), not by isLight() of the picked color: near the threshold the two
     // disagree and the text becomes hard to read.
     const round = (n: number) => Math.round(n * 100) / 100;
-    const onWhite = round(hover.contrast("#fff"));
-    const onInk = round(hover.contrast(BLACK));
-    const whiteText = onWhite >= onInk;
-    const contrast = Math.max(onWhite, onInk);
+    const whiteText = round(hover.contrast("#fff")) >= round(hover.contrast(BLACK));
     return {
       light,
       text: whiteText ? "#fff" : BLACK,
       whiteText,
-      onWhite,
-      onInk,
-      contrast,
+      hoverLight: hover.isLight(),
       pageBg: c.mix("#fff", 0.93).toHex(),
       tagBg: c.mix("#fff", 0.86).toHex(),
       // Light colors need a deeper shade to stay readable on their own tint
@@ -62,25 +57,34 @@ const Note = ({ children, className = "" }: { children: ReactNode; className?: s
   </span>
 );
 
-const notes = {
+const getNotes = (t: { hoverLight: boolean; whiteText: boolean }) => ({
   tag: <Call name="mix" args={'("#fff", 0.86)'} />,
   swatches: (
     <code className="call">
       .<span className="call-name">tints</span>() + .<span className="call-name">shades</span>()
     </code>
   ),
-  hover: <Call name="darken" args="(0.1)" hint="  on hover" />,
+  hover: (
+    <span className="note-lines">
+      <Call name="darken" args="(0.1)" hint="  on hover" />
+      <code className="call">
+        .<span className="call-name">isLight</span>() → {String(t.hoverLight)}
+        <span className="call-hint">  {t.whiteText ? "white" : "dark"} text</span>
+      </code>
+    </span>
+  ),
   soft: (
     <code className="call">
       .<span className="call-name">lighten</span>(0.3).<span className="call-name">alpha</span>(0.4)
     </code>
   ),
   page: <Call name="mix" args={'("#fff", 0.93)'} />,
-};
+});
 
 export function ColordSection() {
-  const [color, setColor] = useState("#21b548");
+  const [color, setColor] = useState("#1fa843");
   const t = useTheme(color);
+  const notes = getNotes(t);
 
   return (
     <section id="colord" className="section colord">
@@ -178,16 +182,6 @@ export function ColordSection() {
               </div>
               <Note className="note--page">{notes.page}</Note>
             </div>
-          </div>
-
-          <div className="checks">
-            <span className="check">
-              <code className="call">
-                .<span className="call-name">darken</span>(0.1).<span className="call-name">contrast</span>(
-                {t.whiteText ? '"#fff"' : '"#000"'}) {t.contrast.toFixed(2)}
-                <span className="call-hint"> → {t.whiteText ? "white" : "dark"} text</span>
-              </code>
-            </span>
           </div>
 
           {/* Narrow screens: the same notes as a list instead of callouts */}

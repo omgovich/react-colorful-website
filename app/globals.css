@@ -928,6 +928,12 @@ button {
   background: var(--ink);
 }
 
+.note-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .note-pill {
   padding: 6px 10px;
   border-radius: 8px;
@@ -979,30 +985,9 @@ button {
   width: 44px;
 }
 
-.checks {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px 16px;
-}
 
-.check {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px 8px;
-  min-width: 0;
-}
 
-/* The code line is long; let it wrap on narrow screens */
-.check .call {
-  white-space: normal;
-}
 
-.check .call-hint {
-  white-space: nowrap;
-}
 
 
 
