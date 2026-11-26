@@ -185,21 +185,18 @@ export function ColordSection() {
           </div>
 
           <div className="checks">
-            {[
-              { arg: '"#fff"', value: t.onWhite, wins: t.whiteText },
-              { arg: '"#0b0b0f"', value: t.onInk, wins: !t.whiteText },
-            ].map(({ arg, value, wins }) => (
-              <span key={arg} className="check" data-wins={wins || undefined}>
-                <code className="call">
-                  .<span className="call-name">contrast</span>({arg}) {value.toFixed(2)}
-                </code>
-                {wins && (
-                  <span className="badge" data-grade={t.grade}>
-                    {t.grade}
-                  </span>
-                )}
+            <span className="check">
+              <span className="swatch" style={{ background: t.text }} />
+              <span className="call call-hint">{t.whiteText ? "white" : "dark"} text on the button</span>
+            </span>
+            <span className="check">
+              <code className="call">
+                .<span className="call-name">contrast</span>() {t.contrast.toFixed(2)}
+              </code>
+              <span className="badge" data-grade={t.grade}>
+                {t.grade}
               </span>
-            ))}
+            </span>
           </div>
 
           {/* Narrow screens: the same notes as a list instead of callouts */}
