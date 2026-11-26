@@ -989,8 +989,19 @@ button {
 
 .check {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 6px 8px;
+  min-width: 0;
+}
+
+/* The code line is long; let it wrap on narrow screens */
+.check .call {
+  white-space: normal;
+}
+
+.check .call-hint {
+  white-space: nowrap;
 }
 
 

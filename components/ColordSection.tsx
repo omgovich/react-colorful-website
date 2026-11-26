@@ -186,12 +186,10 @@ export function ColordSection() {
 
           <div className="checks">
             <span className="check">
-              <span className="swatch" style={{ background: t.text }} />
-              <span className="call call-hint">{t.whiteText ? "white" : "dark"} text on the button</span>
-            </span>
-            <span className="check">
               <code className="call">
-                .<span className="call-name">contrast</span>() {t.contrast.toFixed(2)}
+                .<span className="call-name">darken</span>(0.1).<span className="call-name">contrast</span>(
+                {t.whiteText ? '"#fff"' : '"#0b0b0f"'}) {t.contrast.toFixed(2)}
+                <span className="call-hint"> → {t.whiteText ? "white" : "dark"} text</span>
               </code>
               <span className="badge" data-grade={t.grade}>
                 {t.grade}
