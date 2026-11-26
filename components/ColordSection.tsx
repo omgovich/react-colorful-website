@@ -123,24 +123,24 @@ export function ColordSection() {
                   <rect x="4" y="11" width="16" height="10" rx="2" />
                   <path d="M8 11V7a4 4 0 0 1 8 0v4" />
                 </svg>
-                acme.app/billing
+                acme.app/settings
               </span>
             </div>
             <div className="app-body" style={{ background: t.pageBg }}>
               <div className="app-card">
                 <div className="row">
                   <span className="app-tag" style={{ background: t.tagBg, color: t.tagText }}>
-                    Pro
+                    New
                   </span>
                   {/* The tag is short, so its line starts right at the tag */}
                   <span className="note-lead" aria-hidden />
                   <Note className="note--from-row">{notes.tag}</Note>
                 </div>
-                <p className="app-title">Acme Pro</p>
-                <p className="app-text">$12 / month. Unlimited projects, cancel anytime.</p>
+                <p className="app-title">Appearance</p>
+                <p className="app-text">Pick an accent color for your workspace. Everything else follows.</p>
                 <div className="row">
                   <div className="app-swatches">
-                    <span className="app-label">Theme</span>
+                    <span className="app-label">Accent</span>
                     {t.swatches.map((hex, i) => (
                       <span key={i} className="app-swatch" data-base={i === 3 || undefined} style={{ background: hex }} />
                     ))}
@@ -149,7 +149,7 @@ export function ColordSection() {
                 </div>
                 <div className="row">
                   <span className="app-button" style={{ background: t.hover, color: t.text }}>
-                    Upgrade
+                    Save changes
                     <svg className="app-cursor" width="20" height="24" viewBox="0 0 20 24" aria-hidden>
                       {/* Classic "pointing hand" cursor: white glove, dark outline */}
                       <path
@@ -166,7 +166,7 @@ export function ColordSection() {
                 </div>
                 <div className="row">
                   <span className="app-button app-button--soft" style={{ background: t.soft, color: t.softText }}>
-                    Compare plans
+                    Reset to default
                   </span>
                   <Note>{notes.soft}</Note>
                 </div>
