@@ -274,8 +274,10 @@ button {
   height: 18px;
   border-radius: 50%;
   background: conic-gradient(from 90deg, hsl(0 80% 64%), hsl(30 80% 64%), hsl(60 80% 64%), hsl(90 80% 64%), hsl(120 80% 64%), hsl(150 80% 64%), hsl(180 80% 64%), hsl(210 80% 64%), hsl(240 80% 64%), hsl(270 80% 64%), hsl(300 80% 64%), hsl(330 80% 64%), hsl(360 80% 64%));
-  box-shadow: 0 0 0 2px var(--fg);
-  transition: box-shadow 0.35s ease;
+  /* Always a white ring; the soft shadow keeps it visible on light hero colors */
+  box-shadow:
+    0 0 0 2px #fff,
+    0 1px 6px 1px rgb(0 0 0 / 0.25);
 }
 
 .nav-links {
